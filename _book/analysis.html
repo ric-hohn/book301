@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.267">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Intermediate Statistical Analysis - 3&nbsp; Data Analysis</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./sampling.html" rel="next">
+<link href="./basics.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data Analysis</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Intermediate Statistical Analysis</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./basics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Getting Back to Basics</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analysis.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data Analysis</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sampling.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Sampling Distributions</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./nhst.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Null Hypothesis Significance Testing</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#data-analysis-versus-statistical-inference" id="toc-data-analysis-versus-statistical-inference" class="nav-link active" data-scroll-target="#data-analysis-versus-statistical-inference"><span class="toc-section-number">3.1</span>  Data Analysis versus Statistical Inference</a></li>
+  <li><a href="#two-practices-of-data-analysis" id="toc-two-practices-of-data-analysis" class="nav-link" data-scroll-target="#two-practices-of-data-analysis"><span class="toc-section-number">3.2</span>  Two Practices of Data Analysis</a>
+  <ul class="collapse">
+  <li><a href="#sample-data" id="toc-sample-data" class="nav-link" data-scroll-target="#sample-data"><span class="toc-section-number">3.2.1</span>  Sample Data</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data Analysis</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>In this chapter, we will review the various ways in which we describe empirical distribution, collective referred to as <strong>data analysis</strong>. In doing so, you should learn how to define and calculate single-value summaries, called <strong>descriptive statistics,</strong> that each describe a different distributional characteristic. You will also learn several ways in which we can visualize data (i.e., distributions) to add visual context to those four summarizing values.</p>
+<section id="data-analysis-versus-statistical-inference" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="data-analysis-versus-statistical-inference"><span class="header-section-number">3.1</span> Data Analysis versus Statistical Inference</h2>
+<p>Understandably, the jargon used in this course can be confusing or even contradictory. For example, at some point, you’ve likely referred to this course as a “data analysis” course, yet most often our aims extend well beyond data analysis and into the realm of statistical inference. Consequently, it is important for us to set some ground rules about what certain terms mean and how they relate to one another.</p>
+<ul>
+<li><p><strong>Data analysis:</strong> the organization and summarization of empirical data that we have actually collected</p></li>
+<li><p><strong>Statistical inference:</strong> the use of mathematical techniques to make generalization about a <em>population under study</em> on the basis of data from a sample drawn that population</p></li>
+</ul>
+<p>What makes these terms especially confusing is that they are not mutually exclusive. Clearly, we cannot conduct inferential statistics without doing some amount of data analysis (e.g., calculating the mean). Yet, there does exist a well-defined area of statistical mathematics that deals only with tools for summarizing representing, exploring, and otherwise describing empirical data, with no intention of making inferences to larger populations. In short, data analysis in and of itself is a descriptive endeavor, whereas inferential statistics utilizes data analysis to extend to making generalizations about populations.</p>
+<p>As such, it is critical that you have a solid footing in data analytic strategies and procedures, as they are often a first step towards making inferences about populations. For now, let’s limit our focus to data analytic concepts. We will return our focus to the logic of statistical inference in the next several chapters.</p>
+</section>
+<section id="two-practices-of-data-analysis" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="two-practices-of-data-analysis"><span class="header-section-number">3.2</span> Two Practices of Data Analysis</h2>
+<p>Generally speaking, data analysis involves two main practices:</p>
+<ol type="1">
+<li>the design of quantities</li>
+<li>the aggregation of data into single-value summaries of distributional characteristics (i.e., <em>moments</em>).</li>
+</ol>
+<p>The first practice of designing quantities is one that is most often taken for granted. This course will not lend much attention to this concept, but it worth brief mention. Ultimately, research in the social sciences requires that we give <em>numerical definitions</em> to the concepts we wish to study. Unlike the physical sciences, the attributes we attempt to measure tend to be more loosely defined and less straightforward to quantitative evaluation. For instance, we all have an intuitive understanding of what length is and with the exception of deciding which unit of measurement to use (e.g., inches, centimeters), we also have an intuitive understanding of how to measure length length. But imagine you are interested in measuring the the motivation among Canadian university students. Quantitatively speaking, what does “motivation” mean? Going further, how exactly could we coherently measure motivation and how do we assess the meaningfulness of those measurements? There are many philosophical debates concerning this subject and entire disciplines within psychology whose aim is to devise statistical techniques for making measurement instruments, such as a measure of motivation. It’s not our aim in this course to review these subjects, but it is important to keep the potential fallibility of our measurements in check.</p>
+<p>For this course, our main concern in this area is the summarization of data and the mathematical techniques used to do so. Note that to summarize our data, I mean to produce single-value summaries of different characteristics of <strong>empirical distributions</strong> using the data. This process necessarily results in the <strong>reduction of information.</strong> That is, were are <em>reducing</em> the data into single-value summaries - single values are taken to reflect some characteristic of the data as a whole.</p>
+<p>For example, imagine you have obtained the IQ scores from 100 individuals. Those 100 IQ scores represent to total amount of information we have, but on their own those values provide little context. To gain some context, we could calculate the average IQ score (i.e., <strong><em>the mean</em></strong>) among the 100 individuals to give us a general idea of how they scored. The mean, a single-value summary, provides context to our data, but it is important that we acknowledge it reflects only a <strong>portion</strong> of the information from the full set of scores. Calculating these single-value summaries, also called <strong>descriptive statistics,</strong> will also results in a reduction of information.</p>
+<section id="sample-data" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="sample-data"><span class="header-section-number">3.2.1</span> Sample Data</h3>
+<p>The aim of data analysis is to summarize sample data by calculating sample statistics. Beware the jargon here… Descriptive statistics, sample statistics, single-value summaries… these terms are all synonymous. They refer to the summary of sample data. Sample data is typically organized in a <strong>data matrix</strong>, which is a rectangular array of numbers in which there are <span class="math inline">\(N\)</span> rows and <span class="math inline">\(p\)</span> columns. <span class="math inline">\(N\)</span> denotes the sample size, the number of people, animals, physical objects, etc. in our sample. <span class="math inline">\(p\)</span> denotes the number of variables in our data. Taken together, these values define the <strong>order</strong> of the matrix, such that we refer to the dimensions of the matrix as being <span class="math inline">\([N \times p]\)</span></p>
+<p>Here’s an example. Imagine a researcher takes a random sample of five individuals and measures the height (cm), weight (kg), and shoe size of each. The resulting data would comprise a <span class="math inline">\([5 \times 3]\)</span> matrix:</p>
+<p><br></p>
+<span class="math display">\[\begin{bmatrix}
+165 &amp; 61 &amp; 8 \\
+132 &amp; 45 &amp; 5.5 \\
+190 &amp; 75 &amp; 12.5 \\
+172 &amp; 68 &amp; 10 \\
+154 &amp; 63 &amp; 7 \\
+\end{bmatrix}\]</span>
+<p><br></p>
+<p>There are <span class="math inline">\(N = 5\)</span> rows corresponding to the five people on whom measurements of height, weight, and shoe size have been taken, and <span class="math inline">\(p = 3\)</span> variables for which measurements have been taken.</p>
+<p>Recall that we often use subscripts to reference particular values in matrices, wherein <span class="math inline">\(i\)</span> is used for the rows and <span class="math inline">\(j\)</span> is used for the columns. For example, <span class="math inline">\(X_{4,2}\)</span> refers to the value found in the fourth row at the second column, in this case <span class="math inline">\(68\)</span>. Hence, the “addresses” of the values from the matrix above would look like this:</p>
+<p><br> <span class="math display">\[
+X_{i,j} = \begin{bmatrix}
+X_{1,1} &amp; X_{1,2} &amp; X_{1,3} \\
+X_{2,1} &amp; X_{2,2} &amp; X_{2,3} \\
+X_{3,1} &amp; X_{3,2} &amp; X_{3,3} \\
+X_{4,1} &amp; X_{4,2} &amp; X_{4,3} \\
+X_{5,1} &amp; X_{5,2} &amp; X_{5,3} \\
+\end{bmatrix}
+\]</span> <br></p>
+<p><strong>COME BACK AND FINISH</strong></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./basics.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Getting Back to Basics</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./sampling.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Sampling Distributions</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

@@ -1,0 +1,27 @@
+project:
+  type: book
+
+book:
+  title: "Intermediate Statistical Analysis"
+  author: "Ric Hohn"
+  date: "2022-11-08"
+  chapters:
+    - index.qmd
+    - basics.qmd
+    - analysis.qmd
+    - sampling.qmd
+    - nhst.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: 
+        light: cosmo
+        dark: [cosmo, theme-dark.scss]
+  pdf:
+    documentclass: scrreprt
+
+
+

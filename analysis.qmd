@@ -1,0 +1,67 @@
+# Data Analysis
+
+In this chapter, we will review the various ways in which we describe empirical distribution, collective referred to as __data analysis__. In doing so, you should learn how to define and calculate single-value summaries, called __descriptive statistics,__ that each describe a different distributional characteristic. You will also learn several ways in which we can visualize data (i.e., distributions) to add visual context to those four summarizing values. 
+
+## Data Analysis versus Statistical Inference
+
+Understandably, the jargon used in this course can be confusing or even contradictory. For example, at some point, you've likely referred to this course as a "data analysis" course, yet most often our aims extend well beyond data analysis and into the realm of statistical inference. Consequently, it is important for us to set some ground rules about what certain terms mean and how they relate to one another. 
+
+* __Data analysis:__ the organization and summarization of empirical data that we have actually collected
+
+* __Statistical inference:__ the use of mathematical techniques to make generalization about a _population under study_ on the basis of data from a sample drawn that population
+
+What makes these terms especially confusing is that they are not mutually exclusive. Clearly, we cannot conduct inferential statistics without doing some amount of data analysis (e.g., calculating the mean). Yet, there does exist a well-defined area of statistical mathematics that deals only with tools for summarizing representing, exploring, and otherwise describing empirical data, with no intention of making inferences to larger populations. In short, data analysis in and of itself is a descriptive endeavor, whereas inferential statistics utilizes data analysis to extend to making generalizations about populations.
+
+As such, it is critical that you have a solid footing in data analytic strategies and procedures, as they are often a first step towards making inferences about populations. For now, let's limit our focus to data analytic concepts. We will return our focus to the logic of statistical inference in the next several chapters.
+
+## Two Practices of Data Analysis
+
+Generally speaking, data analysis involves two main practices: 
+
+1. the design of quantities
+2. the aggregation of data into single-value summaries of distributional characteristics (i.e., _moments_).
+
+The first practice of designing quantities is one that is most often taken for granted. This course will not lend much attention to this concept, but it worth brief mention. Ultimately, research in the social sciences requires that we give _numerical definitions_ to the concepts we wish to study. Unlike the physical sciences, the attributes we attempt to measure tend to be more loosely defined and less straightforward to quantitative evaluation. For instance, we all have an intuitive understanding of what length is and with the exception of deciding which unit of measurement to use (e.g., inches, centimeters), we also have an intuitive understanding of how to measure length length. But imagine you are interested in measuring the the motivation among Canadian university students. Quantitatively speaking, what does "motivation" mean? Going further, how exactly could we coherently measure motivation and how do we assess the meaningfulness of those measurements? There are many philosophical debates concerning this subject and entire disciplines within psychology whose aim is to devise statistical techniques for making measurement instruments, such as a measure of motivation. It's not our aim in this course to review these subjects, but it is important to keep the potential fallibility of our measurements in check. 
+
+For this course, our main concern in this area is the summarization of data and the mathematical techniques used to do so. Note that to summarize our data, I mean to produce single-value summaries of different characteristics of __empirical distributions__ using the data. This process necessarily results in the __reduction of information.__ That is, were are _reducing_ the data into single-value summaries - single values are taken to reflect some characteristic of the data as a whole.  
+
+For example, imagine you have obtained the IQ scores from 100 individuals. Those 100 IQ scores represent to total amount of information we have, but on their own those values provide little context. To gain some context, we could calculate the average IQ score (i.e., ___the mean___) among the 100 individuals to give us a general idea of how they scored. The mean, a single-value summary, provides context to our data, but it is important that we acknowledge it reflects only a __portion__ of the information from the full set of scores. Calculating these single-value summaries, also called __descriptive statistics,__ will also results in a reduction of information. 
+
+### Sample Data
+
+The aim of data analysis is to summarize sample data by calculating sample statistics. Beware the jargon here... Descriptive statistics, sample statistics, single-value summaries... these terms are all synonymous. They refer to the summary of sample data. Sample data is typically organized in a __data matrix__, which is a rectangular array of numbers in which there are $N$ rows and $p$ columns. $N$ denotes the sample size, the number of people, animals, physical objects, etc. in our sample. $p$ denotes the number of variables in our data. Taken together, these values define the __order__ of the matrix, such that we refer to the dimensions of the matrix as being $[N \times p]$ 
+
+Here's an example. Imagine a researcher takes a random sample of five individuals and measures the height (cm), weight (kg), and shoe size of each. The resulting data would comprise a $[5 \times 3]$ matrix:
+
+<br>
+
+\begin{bmatrix}
+165 & 61 & 8 \\
+132 & 45 & 5.5 \\
+190 & 75 & 12.5 \\
+172 & 68 & 10 \\
+154 & 63 & 7 \\
+\end{bmatrix}
+
+<br>
+
+There are $N = 5$ rows corresponding to the five people on whom measurements of height, weight, and shoe size have been taken, and $p = 3$ variables for which measurements have been taken. 
+
+Recall that we often use subscripts to reference particular values in matrices, wherein $i$ is used for the rows and $j$ is used for the columns. For example, $X_{4,2}$ refers to the value found in the fourth row at the second column, in this case $68$. Hence, the "addresses" of the values from the matrix above would look like this:
+
+<br>
+$$
+X_{i,j} = \begin{bmatrix}
+X_{1,1} & X_{1,2} & X_{1,3} \\
+X_{2,1} & X_{2,2} & X_{2,3} \\
+X_{3,1} & X_{3,2} & X_{3,3} \\
+X_{4,1} & X_{4,2} & X_{4,3} \\
+X_{5,1} & X_{5,2} & X_{5,3} \\
+\end{bmatrix}
+$$
+<br>
+
+
+__COME BACK AND FINISH!__
+
+## 
